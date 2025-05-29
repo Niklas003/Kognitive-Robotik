@@ -1,4 +1,4 @@
-#Szenarien
+# Szenarien
 
-##Szenario 1 - Gyroskop
-ThymioII dreshgt sich random auf der Stelle Winkelgeschwindigkeit wird vom Gyroskop gemessen
+## Szenario 1 - Gyroskop
+ThywmioII dreshgt sich random auf der Stelle Winkelgeschwindigkeit wird vom Gyroskop gemessen
