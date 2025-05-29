@@ -1,0 +1,38 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Grass.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.0913675059737529 0.9629024676210565 -0.25391104092066635 0.7152371941220208
+  position -1.043023469297064 -0.18444653771182148 1.4074288935353738
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  texture "morning_cloudy_empty"
+  luminosity 3
+}
+RectangleArena {
+  translation 0.85 0 0
+  floorSize 10 10
+  floorTileSize 0.6 0.6
+  floorAppearance Grass {
+    type "mossy"
+  }
+}
+PottedTree {
+  translation 1.9 0 0
+}
+Thymio2 {
+  bodySlot [
+    Gyro {
+    }
+  ]
+}
