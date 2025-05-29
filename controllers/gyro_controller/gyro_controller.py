@@ -16,9 +16,12 @@ rightMotor.setVelocity(5.0)
 leftMotor.setVelocity(-6.0)
 
 import csv
+#clear file before new values come in
+f = open('../gyro_data.csv', "w+")
+f.close()
 with open('../gyro_data.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['Time (s)', 'Angular Velocity X', 'Angular Velocity Y', 'Angular Velocity Z'])
+    writer.writerow(['Timestep', 'Angular Velocity X', 'Angular Velocity Y', 'Angular Velocity Z'])
     time = 0.0
     while robot.step(timestep) != -1:
         rightMotorVeloc = random.randint(3, 9)
@@ -29,4 +32,4 @@ with open('../gyro_data.csv', mode='w', newline='') as file:
         
         angular_velocity = gyro.getValues()
         writer.writerow([time, angular_velocity[0], angular_velocity[1], angular_velocity[2]])
-        time += timestep / 1000.0
+        time += timestep

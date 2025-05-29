@@ -7,12 +7,12 @@ angular_velocity_z = []
 with open('gyro_data.csv', mode='r') as file:
     reader = csv.DictReader(file)
     for row in reader:
-        times.append(float(row['Time (s)']))
+        times.append(float(row['Timestep']))
         angular_velocity_z.append(float(row['Angular Velocity Z']))
 
 plt.plot(times, angular_velocity_z)
-plt.xlabel('Zeit (s)')
+plt.xlabel('Timestep')
 plt.ylabel('Winkelgeschwindigkeit Z (rad/s)')
-plt.title('Winkelgeschwindigkeit über Zeit')
+plt.title('Winkelgeschwindigkeit über Timesteps')
 plt.grid(True)
 plt.show()
