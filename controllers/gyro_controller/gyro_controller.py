@@ -16,7 +16,7 @@ rightMotor.setVelocity(5.0)
 leftMotor.setVelocity(-6.0)
 
 import csv
-with open('gyro_data.csv', mode='w', newline='') as file:
+with open('../gyro_data.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Time (s)', 'Angular Velocity X', 'Angular Velocity Y', 'Angular Velocity Z'])
     time = 0.0
