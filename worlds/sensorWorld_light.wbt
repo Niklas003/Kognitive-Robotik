@@ -1,0 +1,71 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Grass.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/lights/protos/CeilingSpotLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/Ramp30deg.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.41477503728193654 -0.5724869511581034 -0.7072625815080759 4.68828486399453
+  position -0.16612204045756918 -0.4182134684627665 0.6492980009964265
+}
+TexturedBackground {
+  luminosity 0
+  skybox FALSE
+}
+TexturedBackgroundLight {
+  texture "morning_cloudy_empty"
+  luminosity 3
+}
+RectangleArena {
+  translation 0.85 0 0
+  floorSize 10 10
+  floorTileSize 0.6 0.6
+  floorAppearance Grass {
+    type "mossy"
+  }
+}
+PottedTree {
+  translation 1.9 0 0
+}
+Thymio2 {
+  translation -0.233548 0.00480522 -0.0106154
+  rotation -9.97065911076485e-07 -0.9999999999903842 4.270528012489696e-06 0.00886492819648041
+  controller "sonar_controller"
+  bodySlot [
+    LightSensor {
+      translation 0.02 0 0.06
+      colorFilter 0.666667 0 0
+      resolution 5
+    }
+  ]
+}
+CeilingSpotLight {
+  translation 0 0 0.24
+  spotLightRadius 112
+}
+CeilingSpotLight {
+  translation 0.26 0 0.24
+  name "ceiling light(1)"
+  spotLightColor 1 0 0.0156863
+}
+CeilingSpotLight {
+  translation 0.54 0 0.24
+  name "ceiling light(2)"
+  spotLightColor 0.52549 1 0.596078
+}
+CeilingSpotLight {
+  translation 0.82 0 0.24
+  name "ceiling light(3)"
+  spotLightColor 0.2 0.172549 1
+}
+Ramp30deg {
+  translation 0.74 7.54506e-07 0
+  rotation 0 0 1 -1.5707953071795862
+}

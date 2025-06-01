@@ -6,13 +6,12 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Grass.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/Ramp30deg.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.19039961590619106 0.7468954575671233 -0.6370990203479929 0.7612191691495847
-  position -1.946050537508067 -0.4883630739935678 1.1729486890467908
+  orientation 0.29232606524619514 0.2898769167307909 -0.9113269691632785 1.6718809811798467
+  position 0.07271098394839384 1.3514067223444246 0.9318034505712492
 }
 TexturedBackground {
 }
@@ -32,14 +31,11 @@ PottedTree {
   translation 1.9 0 0
 }
 Thymio2 {
-  translation -0.331298 -1.60228 0.693701
+  translation -0.330038 -1.59528 -0.0062445
   rotation 0.0052367615122206855 -0.006045631833024186 0.9999680128207121 1.3510122440800596
   controller "gyro_controller"
   bodySlot [
     Gyro {
     }
   ]
-}
-Ramp30deg {
-  translation 0 -2.21 -0.82
 }

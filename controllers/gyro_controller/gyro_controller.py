@@ -26,8 +26,9 @@ with open('../gyro_data.csv', mode='w', newline='') as file:
     while robot.step(timestep) != -1:
         rightMotorVeloc = random.randint(3, 9)
         leftMotorVeloc = random.randint(3, 9)
+        motorDirection = random.choice([-1,1])
         
-        rightMotor.setVelocity(-rightMotorVeloc)
+        rightMotor.setVelocity(rightMotorVeloc)
         leftMotor.setVelocity(leftMotorVeloc)
         
         angular_velocity = gyro.getValues()
