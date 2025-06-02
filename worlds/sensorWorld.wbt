@@ -6,12 +6,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Grass.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/Ramp30deg.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.29232606524619514 0.2898769167307909 -0.9113269691632785 1.6718809811798467
-  position 0.07271098394839384 1.3514067223444246 0.9318034505712492
+  orientation 0.04172574804183495 -0.9931573820757126 -0.10907509513572046 5.547791408753657
+  position -7.780817543636052 -0.6166595016173765 7.386654986174902
 }
 TexturedBackground {
 }
@@ -27,12 +28,25 @@ RectangleArena {
     type "mossy"
   }
 }
+Ramp30deg {
+  translation 0 2.33 -0.98
+}
 PottedTree {
   translation 1.9 0 0
 }
 Thymio2 {
-  translation -0.330038 -1.59528 -0.0062445
-  rotation 0.0052367615122206855 -0.006045631833024186 0.9999680128207121 1.3510122440800596
+  hidden position_0_0 49.57545065086737
+  hidden position_0_1 -50.022001180182556
+  hidden linearVelocity_0 -0.027237976946258527 -0.03639202993499042 0.0003699446368802811
+  hidden angularVelocity_0 0.003340261551169588 -0.0012363777864529968 1.7713639336343339
+  hidden rotation_1 0.3921418647575347 0.3921418387465434 0.8321355275488264 1.7535306523232448
+  hidden linearVelocity_1 -0.12653257797594003 -0.0370377655263299 0.0005599229037851548
+  hidden angularVelocity_1 2.5789836442795 -5.4212010759010685 1.8613965952054106
+  hidden rotation_2 0.6188071168359714 0.6188071248114674 0.4838961607986958 2.240229068995054
+  hidden linearVelocity_2 0.03379911517035384 0.042002374462100645 0.00030256365856351947
+  hidden angularVelocity_2 -1.7326117798227965 3.6035217824194725 1.850357240901075
+  translation -0.30437645840450767 -1.5968568040572728 -0.00011247157818317088
+  rotation 0.004829545049266729 0.001234396063919001 0.999987575803307 -2.658081405854714
   controller "gyro_controller"
   bodySlot [
     Gyro {

@@ -28,8 +28,8 @@ with open('../gyro_data.csv', mode='w', newline='') as file:
         leftMotorVeloc = random.randint(3, 9)
         motorDirection = random.choice([-1,1])
         
-        rightMotor.setVelocity(rightMotorVeloc)
-        leftMotor.setVelocity(leftMotorVeloc)
+        rightMotor.setVelocity(motorDirection * rightMotorVeloc)
+        leftMotor.setVelocity(-motorDirection * leftMotorVeloc)
         
         angular_velocity = gyro.getValues()
         writer.writerow([time, angular_velocity[0], angular_velocity[1], angular_velocity[2]])
