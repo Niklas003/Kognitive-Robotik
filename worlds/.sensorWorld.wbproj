@@ -5,7 +5,7 @@ sceneTreePerspectives: 000000ff00000001000000030000001e0000024b000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 1 "controllers/sonar_controller/sonar_controller.py" "controllers/gyro_controller/gyro_controller.py"
+textFiles: 1 "../../../../Users/nlabi/OneDrive/Studium/HU/2. Sem/Kognitive Robotik/Übung/Übung2/controllers/sonar_controller/sonar_controller.py" "../../../../Users/nlabi/OneDrive/Studium/HU/2. Sem/Kognitive Robotik/Übung/Übung2/controllers/gyro_controller/gyro_controller.py"
 robotWindow: Thymio II
 globalOptionalRendering: RadarFrustums::DistanceSensorRays
 consoles: Console:All:All
