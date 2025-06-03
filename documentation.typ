@@ -55,20 +55,26 @@ Ein Lidar funktioniert ähnlich wie ein Sonar oder Radar über das Aussenden ein
 Mögliche Einsatzgebiete sind die Umgebungs und Objekterkennung. Optimalerweise in Kombination mit weiteren Sensoren, wie zum Beispiel einer Kamera mit Bilderkennung.
 
 
-= Touch Sensor
+= TouchSensor
 == Aufbau
- In diesem Versuch wurde ein IPR-Roboterarm aufgebaut. Am Roboter wurde der TouchSensor aktiviert und der Roboter drückt gegen zwei Blöcke. Einer gibt nach, einer nicht.
- 
+In diesem Versuch wurde ein IPR-Roboterarm mit einem TouchSensor ausgestattet. Der Versuchsablauf sieht vor, dass der Roboterarm nacheinander gegen zwei Blöcke drückt: Einer der Blöcke ist starr befestigt und gibt nicht nach, während der andere beweglich ist und sich unter Krafteinwirkung verschiebt.
+
 #figure(image("result_images/touch_sensor.jpg"), caption: [Aufbau des TouchSensor-Experiments mit Roboterarm und Blöcken])
 
- == Ergebnisse
+== Ergebnisse
 #figure(image("result_images/ForceTime.png"), caption: [Gemessene Kraft des TouchSensors über die Timesteps des Experiments])<forcetime>
-#ref(<forcetime>) zeigt die Kraft die am TouchSensor ts1 über die Zeit gemessen wird. Ab Timestep 71 sieht man sofort einen sprunghaften Anstieg der gemessen Kraft, da der Arm mit dem unbeweglichen Block in Kontak kommt. Diese wird bleibt bis Timestep 123 konstant, da der Roboter mit voller Kraft gegen den Block drückt und dieser nicht nachgibt. Danach gibt der Roboter auf und dreht sich um in Position vor dem beweglichen Block zu gehen. Durch die Bewegung kommt es zu den kleinen Spitzen bei Timesteps 125-131 und 166. Danach sieht man die erneute Spitze mit der maximalen Kraft des Robotes als er in Kontak mit dem beweglichen Block kommt. Die Kraft geht aber sofort wieder runter, weil der Block nachgibt. Er wird noch einmal getroffen, weswegen die Kraft wieder spiked. Dann ist der bewegliche Block außer Reichweite und die Kraft geht auf die Baseline zurück.
+#ref(<forcetime>) zeigt den Kraftverlauf, der am TouchSensor ts1 während des Experiments gemessen wurde. Ab Timestep 71 ist ein deutlicher Anstieg der gemessenen Kraft zu erkennen, weil der Roboterarm hier in Kontakt mit dem unbeweglichen Block kommt. Da dieser nicht nachgibt, bleibt die Kraft bis Timestep 123 auf einem konstant hohen Niveau. Anschließend bricht der Roboter den Versuch ab und wechselt seine Position, um auf den zweiten, beweglichen Block zu treffen.
+
+In den Timesteps 125–131 sowie bei Timestep 166 sind kleinere Kraftspitzen zu beobachten, die auf die Bewegung zurückzuführen sind. Danach folgt eine weitere, deutlich erkennbare Spitze: Der Roboterarm trifft auf den beweglichen Block. Da dieser nachgibt, fällt die gemessene Kraft sofort wieder ab. Ein zweiter Kontakt führt zu einer erneuten Spitze, bevor der Block schließlich außer Reichweite gerät und sich die Kraftmessung auf den Ausgangswert zurückpendelt.
 
 == Physikalische Prinzipien
-- hier was einfügen was die physikalischen Prinzipien von touch_sensor (force) ist
+Ein TouchSensor misst Kraft bzw. Druck, indem er mechanische Deformation in ein elektrisches Signal umwandelt. Dies geschieht häufig mittels piezoelektrischer Materialien oder Dehnungsmessstreifen, die ihren elektrischen Widerstand bei Verformung ändern. Das zugrundeliegende physikalische Prinzip ist das Hooke’sche Gesetz, welches einen linearen Zusammenhang zwischen Kraft und Deformation beschreibt (F = k·x), solange die Verformung im elastischen Bereich bleibt.
 
 == Mögliche Szenarien
-- erkennen wie ein gegenstand sich verhält (weich/fest wenn kurve schnell/langsam ansteigt)
-- erkennen wie schwer ein gegenstand ist der angehoben wird
-- sicherheit: wenn kraft zu groß roboter schaltet sich zum selbstschutz ab aber auch kobots die anhalten bevor die kraft zu groß wird, das ein mensch verletzt werden könnte
+TouchSensoren sind in der Robotik vielseitig einsetzbar. Ein Anwendungsfeld ist die Erkennung von Kollisionen mit einem Bumper. 
+
+Ein weiteres Anwendungsfeld ist die Erkennung der Materialeigenschaften von Objekten. Ein "weiches" Objekt gibt bei Kontakt nach, bei starren Objekten bleibt die Kraft hingegen konstant.
+
+Zudem können TouchSensoren zur Gewichtsschätzung genutzt werden, wenn ein Roboterarm ein Objekt anhebt und die dabei wirkende Gewichtskraft registriert.
+
+Ein weiterer wichtiger Aspekt ist die Sicherheit: Bei Überschreiten eines definierten Kraftgrenzwertes kann der Roboter automatisch stoppen, um Schäden an sich selbst oder an seiner Umgebung zu vermeiden. Besonders in der Zusammenarbeit mit Menschen. Bei sogenannten kollaborativen Robotern (Cobots) ist diese Fähigkeit essenziell, um eine Sichere Zusammenarbeit von Mensch und Maschiene zu ermöglichen.
