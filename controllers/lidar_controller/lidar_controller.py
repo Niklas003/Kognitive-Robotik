@@ -2,7 +2,6 @@ from controller import Robot
 import csv
 import os
 
-# delete the previous lidar_data.csv file if it exists
 if os.path.exists('../lidar_data.csv'):
     os.remove('../lidar_data.csv')
 
@@ -35,7 +34,6 @@ print(f"max range: {lidar.getMaxRange()}")
 time = 0.0
 while robot.step(timestep) != -1:
     ranges = lidar.getRangeImageArray()
-    # Check shape
     if len(ranges) == num_layers and all(len(row) == num_rays for row in ranges):
         allRanges.append((time, ranges))
     else:
@@ -46,6 +44,5 @@ with open('../lidar_data.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Timestep'] + [f'Range {i}' for i in range(num_layers * num_rays)])
     for entry in allRanges:
-        # Flatten the 2D array
         flat_ranges = [item for sublist in entry[1] for item in sublist]
         writer.writerow([entry[0]] + flat_ranges)
