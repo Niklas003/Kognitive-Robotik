@@ -35,7 +35,13 @@ for i in range(len(joints)):
 
 time = 0
 
-while robot.step(timestep) != -1:
-    if time % 100 == 0: 
-        for i in range(len(touchs)):
-            print(f"{touch_names[i]}: {touchs[i].getValue()/10}")
+#clear file before new values come in
+with open('../touch_data.csv', "w+") as file:
+    file.close()
+
+with open('../touch_data.csv', mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Timestep', 'Force'])
+    while robot.step(timestep) != -1:
+        writer.writerow([time, touchs[3].getValue()/10])
+        time += 1
