@@ -42,6 +42,19 @@ Ein Sonar nutzt die Eigenschaft aus, dass Schallwellen, insbesondere Ultraschall
 == Mögliche Szenarien
 Mögliche Einsatzfelder für Sonare in der Robotik könnten bspw. Roboter sein welche sich unter Wasser bewegen. Sonare könnten zur Kollisionsvermeidung oder auch Kartierung vom Meeresgrund eingesetzt werden.
 
+= Lidar
+== Aufbau
+Im folgendem Versuch wird der Thymio II mit einem Lidar an seiner Vorderspitze ausgestattet. Er wird mit drei Wänden umringt und wird durch seine Motoren zum drehen gebracht. Währenddessen wird das Lidar eingeschaltet und die gesammelten Abstandsdaten aufgezeichnet. Das Lidar arbeitet dabei mit einem Blickfeld von ca. 90° nach Vorne, 6 Strahlenschichten und einer horizontalen Auflösung von 512.
+== Ergebnisse
+#figure(image("result_images/lidarImage1.png"), caption: [Lidarergebniss ohne Wand])
+#figure(image("result_images/lidarImage2.png"), caption: [Lidarergebniss mit Wand])
+In den gezeigten Bildern ist die "Sicht" des Lidars im 3D-Raum zu erkennen. Wobei die blauen Punkte die maximale Reichweite des Lidar zeigen, ist durch die Roten Punkte im die Wand gekennzeichnet, in dessen Richtung der Thymio II sich dreht. Im Bild lässt sich somit nicht nur die Position des Objektes in Relation zum Roboter entnehmen, sondern auch seine From.
+== Physikalische Prinzipien
+Ein Lidar funktioniert ähnlich wie ein Sonar oder Radar über das Aussenden eines Signals und das Auswerten der Reflektion des Signals. Wobei das Sonar und Radar, Schall und elekrtomagnetische Strahlung als Signal nutzen, nutzt das Lidar ausgestrahltes Licht. Das Lidar strahlt dabei einen oder mehrere konzentrierte Lichtstrahlen aus. Diese werden dann durch Objekte in der Umgebung reflektiert und in das Lidar zurückgestrahlt. Durch das messen der vergangenen Zeit zwischen Ausstrahlung und Einfangen eines Strahls kann dann die entferung des Objektes ermittelt werden. Mit Hilfe weiteren Strahlen, deren Reflektion und Winkel, kann dann eine sogenannte Punktwolke gebildet werden, die z.B.: die Form eines Objektes wiederspiegelt.  
+== Mögliche Szenarien
+Mögliche Einsatzgebiete sind die Umgebungs und Objekterkennung. Optimalerweise in Kombination mit weiteren Sensoren, wie zum Beispiel einer Kamera mit Bilderkennung.
+
+
 = Touch Sensor
 == Aufbau
  In diesem Versuch wurde ein IPR-Roboterarm aufgebaut. Am Roboter wurde der TouchSensor aktiviert und der Roboter drückt gegen zwei Blöcke. Einer gibt nach, einer nicht.
