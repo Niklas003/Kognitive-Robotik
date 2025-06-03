@@ -7,13 +7,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/Ramp30deg.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/samples/contests/ratslife/protos/LegoWall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/samples/robotbenchmark/maze_runner/protos/MazeBlock.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.1490203241613559 0.3234743056155192 -0.9344288718749021 1.0251420632592299
-  position -2.5476458912757067 0.4351730292252821 1.4963650484901732
+  orientation 0.029200901608079727 0.37732044917000906 -0.9256222696021407 1.1086057700910315
+  position -1.4181910264984083 -0.35286128724022275 1.1348167130485614
 }
 TexturedBackground {
 }
@@ -29,27 +29,17 @@ RectangleArena {
     type "mossy"
   }
 }
-LegoWall {
-  translation -0.279318 -1.36482 0.195
-  rotation 0 0 1 -0.261795307179586
-}
 PottedTree {
   translation 1.9 0 0
 }
 Thymio2 {
-  hidden position_0_0 30.33655759289106
-  hidden position_0_1 120.3720554091635
-  hidden rotation_1 -0.23635653431884018 -0.23635649257503932 -0.94248140411491 4.653184581253028
-  hidden rotation_2 -0.6919113816949171 -0.6919114104087628 -0.20619709024908014 3.5482870301199014
-  translation -0.549945 -2.50095 0.172386
-  rotation -0.0010825498506546985 0.007007379033283193 -0.999974862046494 -1.3513853071795863
+  translation -0.205746 -2.16776 0.176642
+  rotation 0.0001374380182653925 -0.006141250816166865 0.9999811328966184 1.61318
   controller "lidar_controller"
   bodySlot [
     Lidar {
       translation 0.09 0 0.03
-      horizontalResolution 1024
-      verticalFieldOfView 0.703125
-      projection "planar"
+      numberOfLayers 6
     }
     Gyro {
     }
@@ -57,4 +47,16 @@ Thymio2 {
 }
 Ramp30deg {
   translation 0 -2.21 -0.82
+}
+MazeBlock {
+  translation 0 -2.17 0.16
+}
+MazeBlock {
+  translation -0.43 -2.17 0.16
+  name "maze block(1)"
+}
+MazeBlock {
+  translation -0.21 -2.39 0.16
+  rotation 0 0 1 -1.5707953071795862
+  name "maze block(2)"
 }
