@@ -41,3 +41,21 @@ In dem Ergebnisdiagramm wird über die Zeit (Timesteps) hinweg die Distanz zu ei
 Ein Sonar nutzt die Eigenschaft aus, dass Schallwellen, insbesondere Ultraschallwellen an Objekten reflektiert werden (Beispiel: Echo in einer Höhle). Dabei misst ein Sonar die Zeit wie lange es dauert bis Schallwellen auf ein Objekt treffen und dann zum Ausgangspunkt reflektiert werden. Hieraus kann dann die Entfernung zu dem reflektierenden Objekt errechnet werden. Zu beachten ist, dass Objekte von denen Schallwellen reflektiert werden sich nicht unmittelbar vor/unter/über dem Sonar befinden müssen, da die ausgesendeten Schallwellen sich im Raum Kegelförmig ausbreiten und somit auch von Objekten reflektiert werden können welche sich in einem bestimmten Winkel zum Sonar befinden.
 == Mögliche Szenarien
 Mögliche Einsatzfelder für Sonare in der Robotik könnten bspw. Roboter sein welche sich unter Wasser bewegen. Sonare könnten zur Kollisionsvermeidung oder auch Kartierung vom Meeresgrund eingesetzt werden.
+
+= Touch Sensor
+== Aufbau
+ In diesem Versuch wurde ein IPR-Roboterarm aufgebaut. Am Roboter wurde der TouchSensor aktiviert und der Roboter drückt gegen zwei Blöcke. Einer gibt nach, einer nicht.
+ 
+#figure(image("result_images/touch_sensor.jpg"), caption: [Aufbau des TouchSensor-Experiments mit Roboterarm und Blöcken])
+
+ == Ergebnisse
+#figure(image("result_images/ForceTime.png"), caption: [Gemessene Kraft des TouchSensors über die Timesteps des Experiments])<forcetime>
+#ref(<forcetime>) zeigt die Kraft die am TouchSensor ts1 über die Zeit gemessen wird. Ab Timestep 71 sieht man sofort einen sprunghaften Anstieg der gemessen Kraft, da der Arm mit dem unbeweglichen Block in Kontak kommt. Diese wird bleibt bis Timestep 123 konstant, da der Roboter mit voller Kraft gegen den Block drückt und dieser nicht nachgibt. Danach gibt der Roboter auf und dreht sich um in Position vor dem beweglichen Block zu gehen. Durch die Bewegung kommt es zu den kleinen Spitzen bei Timesteps 125-131 und 166. Danach sieht man die erneute Spitze mit der maximalen Kraft des Robotes als er in Kontak mit dem beweglichen Block kommt. Die Kraft geht aber sofort wieder runter, weil der Block nachgibt. Er wird noch einmal getroffen, weswegen die Kraft wieder spiked. Dann ist der bewegliche Block außer Reichweite und die Kraft geht auf die Baseline zurück.
+
+== Physikalische Prinzipien
+- hier was einfügen was die physikalischen Prinzipien von touch_sensor (force) ist
+
+== Mögliche Szenarien
+- erkennen wie ein gegenstand sich verhält (weich/fest wenn kurve schnell/langsam ansteigt)
+- erkennen wie schwer ein gegenstand ist der angehoben wird
+- sicherheit: wenn kraft zu groß roboter schaltet sich zum selbstschutz ab aber auch kobots die anhalten bevor die kraft zu groß wird, das ein mensch verletzt werden könnte
