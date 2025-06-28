@@ -1,0 +1,17 @@
+- Exp 1: step frequency up
+	- frequency = 4 (default)
+		- time: 01:53:76
+	- frequency = 6
+		- time: 01:18:56
+		- a bit unstable
+	- frequency = 8
+		- walks backwards and then falls over
+	- frequency = 7
+		- falls over shortly afer start
+	- frequency = 6.5
+		- falls over shortly after start
+	- "soft cap" = 6
+- Exp 2: multiply all parameters with the same value
+	- The parameters do not scale together
+	- major instabillity
+- Exp 3:
