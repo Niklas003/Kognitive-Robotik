@@ -65,7 +65,7 @@ class Sprinter(Robot):
     def run(self):
         
         # Parameters defining the geometry and dynamic of the walk.
-        
+        #comment out params that should not be used otherwise overwriting of params
         ## 1. slow and steady (01:53:76)
         f            = 4
         robot_height = 0.5
@@ -82,6 +82,16 @@ class Sprinter(Robot):
         step_length  = 0.2   # length of the step
         arm_swing    = 2.0   # arm swing
         
+        ## 3. params for fast time (00:17:60)
+        #found these params by try and error. Nao seems to shift left and right while running but keeps in lane
+        f            = 16   
+        robot_height = 0.47  
+        shift_y      = 0.1547  
+        step_height  = 0.96  
+        step_length  = 0.59
+        arm_swing    = 0.96
+
+
         while self.step(self.timeStep) != -1:
             
             # scale the time to modulate the frequency of the walk
