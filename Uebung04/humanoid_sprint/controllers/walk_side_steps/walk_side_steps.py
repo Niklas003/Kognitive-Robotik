@@ -9,6 +9,9 @@ class Sprinter(Robot):
 
         self.RShoulderPitch = self.getDevice('RShoulderPitch')
         self.LShoulderPitch = self.getDevice('LShoulderPitch')
+        self.LShoulderRoll = self.getDevice('LShoulderRoll')
+        self.RShoulderRoll = self.getDevice('RShoulderRoll')
+
         
         self.RHipYawPitch = self.getDevice('RHipYawPitch')
         self.LHipYawPitch = self.getDevice('LHipYawPitch')
@@ -42,9 +45,9 @@ class Sprinter(Robot):
         #comment out params that should not be used otherwise overwriting of params
         ## 1. slow and steady (01:53:76)
         f            = 4
-        robot_height = 0.5
+        robot_height = 0.45
         shift_y      = 0.3
-        step_height  = 0.4
+        step_height  = 0.5
         step_length  = 0.2
         arm_swing    = 2.0
         step_side    = 0.2    # lateral step length negative numbers-> mode left positive -> move right
@@ -66,18 +69,21 @@ class Sprinter(Robot):
                 self.LShoulderPitch.setPosition(arm_swing * xR + math.pi/2 - 0.1)
 
             elif mode == 'side_step':
-                x = 0.0  # no forward/backward movement
-                yL = math.sin(t) * step_side
+                x = math.sin(t)*-0.2  # no forward/backward movement try to walk on y-Axis
+                yL = math.sin(t) * step_side 
                 yR = math.sin(t + math.pi) * step_side
                 zL = (math.cos(t)           + 1.0) / 2.0 * step_height + robot_height
                 zR = (math.cos(t + math.pi) + 1.0) / 2.0 * step_height + robot_height
-                print(zL, zR)
+                weight_shift = 0.1 * math.sin(t)
 
-                # Feet move side-to-side, x stays constant
-                self.left(x, yL, zL)
-                self.right(x, yR, zR)
+                # Feet move side-to-side with addition to weight
+                self.left(x, yL+weight_shift, zL)
+                self.right(x, yR+weight_shift, zR)
 
                 # Shoulders can stay fixed or counter-rotate
+                self.LShoulderRoll.setPosition(0.2 * math.sin(t)+0.3)
+                self.RShoulderRoll.setPosition(0.2 * math.sin(t)-0.3)
+                
                 self.RShoulderPitch.setPosition(math.pi/2)
                 self.LShoulderPitch.setPosition(math.pi/2)
 
