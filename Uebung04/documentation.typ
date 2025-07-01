@@ -15,6 +15,9 @@ Niklas Labitzke",
 )
 = Ergebnisdiskussion
 
+== Aufgabe 1 Neue Parameter für schnellere Bewegung
+
+
 == Aufgabe 2 Seitwärtslaufen
 Die Lösung bedient sich an dem bereits vorhandenem Code aus den walk_forward controller. Anders als beim Vorwärtslaufen sorgt der x Wert nun dafür dass der Nao nicht im Kreis läuft. Anstatt dass die Beine nach vorne bewegt werden, werden diese zur Seite bewegt. Zusätzlich schwingen die Arme mit um die Seitwärtsbewegung zu stabilisieren. Es ist im Grunde eine recht simple Lösung in welcher die Bewegungslogik an der x-Achse auf die y-Achse übertragen wurde. Die Lösung sorgt aber dennoch dafür dass ohne viel zusätzliche Logik dass sich der Nao lateral bewegen kann.
 
@@ -25,3 +28,23 @@ Des Weiteren ist der Roboter in einer ständigen Pendelbewegung, was dazu führt
 - Ankle Roll während heranziehen des Beines
 - geradlinige Seitwärtsbewegung
 - Stabilität herstellen sollte der Modus gewechselt werden
+
+
+== Aufgabe 3 Drehbewegung auf der Stelle
+
+== Aufgabe 4 Aktive Stabilisierung mit Hilfe von IMU Sensoren
+Aufbauend auf der Lösung von Aufgabe 1, wurde der Code um einige Funktionen erweitert. Als erstes wurde die vorhandene Logik zur Stabilisierung des Roboters entfernt. Sie beinhaltete eine einfache Armschwungbewegung, die zeitgleich zur Beinbewegung durchgeführt wurde. Anschließend wurde die Entscheidung getroffen die Daten des, sich an Bord des Nao befindlichen, Gyroskopes zu Nutzen, um eine aktive Stabilisierung des Roboters verwirklichen.
+
+Der Controller wurde um drei neue Funktionen erweitert, die gemeinsam die Daten des Gyroskops speichern, vergleichen und für eine Entscheidungsfindung nutzen.
+Die Gyroskopdaten werden in einem "Kurzzeitgedächnis" gespeichert (ein Tupel mit den neusten Datensätzen des Gyroskops). Nachfolgend wird die Differenz der Yaw Werte, der zwei jüngsten Datensätze, errechnet. Aus dieser Differenz lässt sich die aktuelle Drehbewegung des Naos ermitteln. Diese Drehbewegung kann nun mit der richtigen Armbewegung neutralisiert werden.
+
+- Bewegung nach Links:
+    - Linker Arm nach Vorne
+    - Rechter Arm nach Hinten
+- Bewegung nach Rechts:
+    - Linker Arm nach Hinten
+    - Rechter Arm nach Vorne
+
+Nachdem der Nao jetzt stabil laufen konnte, wurde bei dem Ausführen des Codes ein starker Linksdrall in der Bewegung entdeckt. Der Nao war zwar in der Lage, die Welt stabil zu durchqueren, jedoch konnte das Ende der Rennstrecke nicht erreicht werden. Beim Laufen stolperte der Nao und kam etwas ins Wanken, dadurch änderte sich die Laufrichtung und die Strecke wurde verlassen. Um dies zu beheben wurden die Parameter, die aus der Lösung der ersten Aufgabe hervorkamen, weiter bearbeitet. Trial and Error verfeinerten das Ergebis, bis der Nao schließlich das Ende der Strecke mit einer Zeit von 00:16:55 erreichte. Seine Zeit konnte sogar etwas verbessert werden, wenn auch die Laufspur im Eifer des Gefechts einmal gewechselt wurde.
+
+Als Mögliche Verbesserung des Controllers, wäre eine adaptive Armbewegung möglich. Diese Armbewegung könnte durch die Stärke der Drehbewegung des Naos beinflusst werden und so eine effektivere Neutraliesierung erzeugen. 
