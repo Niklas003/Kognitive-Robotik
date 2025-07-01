@@ -75,7 +75,7 @@ class Sprinter(Robot):
         arm_swing    = 2.0
 
         ## 2. break neck speed (01:18:56)
-        f            = 6     # frequency of the oscillation
+        f            = 6     # frequency of the step movement
         robot_height = 0.5   # height of the robot (hips)
         shift_y      = 0.3   # hip sway while moving
         step_height  = 0.4   # height of the step
