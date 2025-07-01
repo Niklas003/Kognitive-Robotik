@@ -21,8 +21,7 @@ Der erste Schritt zur Lösung dieser Aufgabe war es, den Effekt der vorhandenen 
 Bei einer weiteren Steigerung von "f" (auf Werte höher als 6) endete die Bewegung des Naos im Verlust seiner Stabilität und einem Sturz auf den Boden. 
 Folgende Experimente dienten der Klarstellung einiger weiterer Tatsachen. Wie dass, das alleinige Erhöhen anderer Werte ebenfalls keine Erfolg darstellte. Sowie als auch das gemeinsame, gleichmäßige Steigern aller Parameter via eines Multiplikators.
 
-[MALTE hier deinen Workflow eingeben]
-
+Der erste Schritt bestand darin, durch explorative Tests die relevanten Rahmenparameter zu identifizieren und deren Einfluss auf die Laufleistung zu analysieren. Im Anschluss daran wurden die Parameter systematisch und automatisiert in unterschiedlichen Kombinationen variiert. Auf diese Weise konnte schließlich mit den Einstellungen f = 15.0, robot_height = 0.47, shift_y = 0.1547, step_height = 0.96, step_length = 0.7 und arm_swing = 1.2 eine Bestzeit von 15,76 Sekunden erzielt werden.
 == Aufgabe 2 Seitwärtslaufen
 Die Lösung bedient sich an dem bereits vorhandenem Code aus den walk_forward controller. Anders als beim Vorwärtslaufen sorgt der x Wert nun dafür dass der Nao nicht im Kreis läuft. Anstatt dass die Beine nach vorne bewegt werden, werden diese zur Seite bewegt. Zusätzlich schwingen die Arme mit um die Seitwärtsbewegung zu stabilisieren. Es ist im Grunde eine recht simple Lösung in welcher die Bewegungslogik an der x-Achse auf die y-Achse übertragen wurde. Die Lösung sorgt aber dennoch dafür dass ohne viel zusätzliche Logik dass sich der Nao lateral bewegen kann.
 
@@ -36,6 +35,9 @@ Des Weiteren ist der Roboter in einer ständigen Pendelbewegung, was dazu führt
 
 
 == Aufgabe 3 Drehbewegung auf der Stelle
+Für die Lösung dieser Aufgabe habe ich mich am natürlichen Bewegungsablauf eines Menschen orientiert. In einem Selbstversuch habe ich vier charakteristische Phasen während der Laufbewegung identifiziert: Zunächst wird das linke Bein angehoben und nach außen rotiert. Anschließend wird es wieder auf den Boden gesetzt, um im nächsten Schritt das rechte Bein anzuheben und ebenfalls zu rotieren. Zum Abschluss werden beide Beine abgestellt, bevor der Zyklus von vorn beginnt.
+
+Für die Programmierung habe ich diese vier Schritte als Zustände in einer State Machine umgesetzt, die sie nacheinander durchläuft. Diese Herangehensweise ermöglicht es, den menschlichen Bewegungsablauf einfach und nachvollziehbar nachzubilden, ohne mathematische Modelle formulieren zu müssen. Ein Nachteil dieser Methode ist, dass die Übergänge zwischen den Zuständen nicht interpoliert werden, wodurch die Bewegung etwas ruckartig wirkt. Dennoch bietet diese Lösung eine anschauliche und funktionale Umsetzung, die sich direkt am menschlichen Gangbild orientiert.
 
 == Aufgabe 4 Aktive Stabilisierung mit Hilfe von IMU Sensoren
 Aufbauend auf der Lösung von Aufgabe 1, wurde der Code um einige Funktionen erweitert. Als Erstes wurde die vorhandene Logik, zur Stabilisierung des Roboters, entfernt. Sie beinhaltete eine einfache Armschwungbewegung, die zeitgleich zur Beinbewegung durchgeführt wurde. Anschließend wurde die Entscheidung getroffen die Daten des, sich an Bord des Nao befindlichen, Gyroskopes zu Nutzen, um eine aktive Stabilisierung des Roboters verwirklichen.
