@@ -36,7 +36,60 @@ class Sprinter(Robot):
         self.LAnklePitch  = self.getDevice('LAnklePitch')
         self.RAnkleRoll   = self.getDevice('RAnkleRoll')
         self.LAnkleRoll   = self.getDevice('LAnkleRoll')
+
+        # Get IMU components
+        # Get Gyrometer
+        self.gyro = self.getDevice('gyro')
+        # Get Accelerometer
+        self.accel = self.getDevice('accelerometer')
+        # Enable sensors
+        self.gyro.enable(self.timeStep)
+        self.accel.enable(self.timeStep)
+
         
+        firstGyroValues, firstAccelValues = controller.checkIMU()
+        # create short term menmory for gyro values
+        self.gyroMemory = (firstGyroValues, firstGyroValues, firstGyroValues, firstGyroValues, firstGyroValues)
+
+    def updateGyroMemory(self, gyroValues):
+        # update the gyro memory with the latest gyro value differences (keep only last 5)
+        self.gyroMemory = (self.gyroMemory[1], self.gyroMemory[2], self.gyroMemory[3], self.gyroMemory[4], gyroValues)
+
+    def checkIMU(self):
+        gyroValues = self.gyro.getValues()
+        accelValues = self.accel.getValues()
+        
+        # print("Gyro: ", gyroValues)
+        # print("Accel: ", accelValues)
+        
+        return gyroValues, accelValues
+
+    def analyseIMU(self, checkedGyroValues, previousGyroValues):
+        # get difference between checkedGyroValues and the previousGyroValues
+        gyroValueDiff = [checkedGyroValues[i] - previousGyroValues[i] for i in range(len(checkedGyroValues))]
+        
+        return gyroValueDiff
+
+
+    
+    def useIMUValues(self, checkedAccelValues, arm_swing, xLeft, xRight):
+        # check gyro values for turning direction of the robot
+
+        newestGyroValues = self.gyroMemory[4]
+        turnShreshhold = 0.05
+
+        if newestGyroValues[0] < -turnShreshhold:  # turning left
+            self.RShoulderPitch.setPosition(arm_swing*xLeft  + math.pi/2 - 0.1)
+            self.LShoulderPitch.setPosition(arm_swing*xRight + math.pi/2 - 0.1)
+
+        elif newestGyroValues[0] > turnShreshhold: # turning right
+            self.RShoulderPitch.setPosition(arm_swing*xLeft  + math.pi/2 - 0.1)
+            self.LShoulderPitch.setPosition(arm_swing*xRight + math.pi/2 - 0.1)
+         
+
+
+         
+    
         
     # move the left foot (keep the foot paralell to the ground)
     def left(self, x, y, z):
@@ -62,7 +115,7 @@ class Sprinter(Robot):
         self.RAnkleRoll.setPosition(-y)
         
         
-    def run(self):
+    def run(self, previousGyroValues, previousAccelValues):
         
         # Parameters defining the geometry and dynamic of the walk.
         # comment out params that should not be used otherwise overwriting of params
@@ -91,6 +144,15 @@ class Sprinter(Robot):
         step_length  = 0.59
         arm_swing    = 0.96
 
+        ## 4. params edited from above, for IMU use (00:16:55)
+        # found these params by try and error. Nao shifts lanes to the right but stays on the track. Makiing him pass the course
+        # stabillity is achieved, but steering is not actively controlled 
+        f            = 15   
+        robot_height = 0.47  
+        shift_y      = 0.17 
+        step_height  = 0.85  
+        step_length  = 0.65
+        arm_swing    = 0.75
 
         while self.step(self.timeStep) != -1:
             
@@ -114,10 +176,19 @@ class Sprinter(Robot):
             self.right(xRight, yLeftRight, zRight)
             
             # move shoulders to stabilize steps
-            self.RShoulderPitch.setPosition(arm_swing*xLeft  + math.pi/2 - 0.1)
-            self.LShoulderPitch.setPosition(arm_swing*xRight + math.pi/2 - 0.1)
+            # self.RShoulderPitch.setPosition(arm_swing*xLeft  + math.pi/2 - 0.1)
+            # self.LShoulderPitch.setPosition(arm_swing*xRight + math.pi/2 - 0.1)
+
+            checkedGyroValues, checkedAccelValues = self.checkIMU()
+            gyroValueDiff = self.analyseIMU(checkedGyroValues, previousGyroValues)
+            self.updateGyroMemory(gyroValueDiff)
+            self.useIMUValues(checkedAccelValues, arm_swing, xLeft, xRight)
+            previousAccelValues = checkedAccelValues
+            previousGyroValues = checkedGyroValues
+
         
         
 controller = Sprinter()
 controller.initialize()
-controller.run()
+firstGyroValues, firstAccelValues = controller.checkIMU()
+controller.run(firstGyroValues, firstAccelValues)
