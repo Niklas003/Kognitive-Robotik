@@ -17,6 +17,11 @@ Niklas Labitzke",
 
 == Aufgabe 1 Neue Parameter für schnellere Bewegung
 
+Der erste Schritt zur Lösung dieser Aufgabe war es, den Effekt der vorhandenen Parameter zu erkennen und festzuhalten. Dadurch wurde, als erste Verbesserung der Laufgeschwindigkeit, der Parameter "f" identifiziert. Er regelt die Frequenz der Schritte des Nao. Durch das alleinige Erhöhen dieses Wertes, konnte Laufgeschwindigkeit von 01:53:76 (f = 4) auf 01:18:56 (f = 6) gesteigert werden.
+Bei einer weiteren Steigerung von "f" (auf Werte höher als 6) endete die Bewegung des Naos im Verlust seiner Stabilität und einem Sturz auf den Boden. 
+Folgende Experimente dienten der Klarstellung einiger weiterer Tatsachen. Wie dass, das alleinige Erhöhen anderer Werte ebenfalls keine Erfolg darstellte. Sowie als auch das gemeinsame, gleichmäßige Steigern aller Parameter via eines Multiplikators.
+
+[MALTE hier deinen Workflow eingeben]
 
 == Aufgabe 2 Seitwärtslaufen
 Die Lösung bedient sich an dem bereits vorhandenem Code aus den walk_forward controller. Anders als beim Vorwärtslaufen sorgt der x Wert nun dafür dass der Nao nicht im Kreis läuft. Anstatt dass die Beine nach vorne bewegt werden, werden diese zur Seite bewegt. Zusätzlich schwingen die Arme mit um die Seitwärtsbewegung zu stabilisieren. Es ist im Grunde eine recht simple Lösung in welcher die Bewegungslogik an der x-Achse auf die y-Achse übertragen wurde. Die Lösung sorgt aber dennoch dafür dass ohne viel zusätzliche Logik dass sich der Nao lateral bewegen kann.
