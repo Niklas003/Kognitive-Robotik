@@ -90,6 +90,15 @@ class Sprinter(Robot):
         step_height  = 0.96  
         step_length  = 0.59
         arm_swing    = 0.96
+        
+        ## 3. params for fast time (00:15:76)
+        # found these params by try and error. Nao seems to shift left and right while running but keeps in lane
+        f            = 15   
+        robot_height = 0.47  
+        shift_y      = 0.1547  
+        step_height  = 0.96  
+        step_length  = 0.7
+        arm_swing    = 1.2
 
 
         while self.step(self.timeStep) != -1:
